@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * rev_string - reverses a string in place
@@ -39,7 +40,7 @@ void write_base(char *str)
 	int i;
 
 	for (i = 0; str[i] != '\0'; i++)
-		_putchar(str[i]);
+		_write_char(str[i]);
 }
 
 /**
