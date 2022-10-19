@@ -4,11 +4,11 @@
  * parser - Receives the main string and all the necessary parameters to
  * print a formated string.
  * @format: A string containing all the desired characters.
- * @f: A list of all the posible functions.
+ * @p: A list of all the posible functions.
  * @arg_list: A list containing all the argumentents passed to the program.
  * Return: A total count of the characters printed.
  */
-int parser(const char *format, print_t f[], va_list arg_list)
+int parser(const char *format, print_t p[], va_list arg_list)
 {
 	int i, j, r_val, printed_chars;
 
@@ -18,18 +18,18 @@ int parser(const char *format, print_t f[], va_list arg_list)
 		if (format[i] == '%') /*Checks for format specifiers*/
 		{
 			/*Iterates through struct to find the right func*/
-			for (j = 0; f[j].t != NULL; j++)
+			for (j = 0; p[j].t != NULL; j++)
 			{
-				if (format[i + 1] == f[j].t[0])
+				if (format[i + 1] == p[j].t[0])
 				{
-					r_val = f[j].f(arg_list);
+					r_val = p[j].f(arg_list);
 					if (r_val == -1)
 						return (-1);
 					printed_chars += r_val;
 					break;
 				}
 			}
-			if (f[j].t == NULL && format[i + 1] != ' ')
+			if (p[j].t == NULL && format[i + 1] != ' ')
 			{
 				if (format[i + 1] != '\0')
 				{
