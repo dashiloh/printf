@@ -1,24 +1,6 @@
 #include "main.h"
-
-
-/**
- * hex_check - Checks which hex function is calling it
- * @num: Number to convert into letter
- * @x: Tells which hex function is calling it
- * Return: Ascii value for a letter
- */
-int hex_check(int num, char x)
-{
-	char *hex = "abcdef";
-	char *Hex = "ABCDEF";
-
-	num = num - 10;
-	if (x == 'x')
-		return (hex[num]);
-	else
-		return (Hex[num]);
-	return (0);
-}
+#include <stdio.h>
+int hex_check(int, char);
 
 /**
  * print_binary - Converts a number from base 10 to binary
@@ -34,7 +16,7 @@ int print_binary(va_list list)
 
 	num = va_arg(list, unsigned int);
 	if (num == 0)
-		return (_putchar('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
 	len = base_len(num, 2);
@@ -75,7 +57,7 @@ int print_octal(va_list list)
 	num = va_arg(list, unsigned int);
 
 	if (num == 0)
-		return (_putchar('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
 	len = base_len(num, 8);
@@ -116,7 +98,7 @@ int print_hex(va_list list)
 	num = va_arg(list, unsigned int);
 
 	if (num == 0)
-		return (_putchar('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
 	len = base_len(num, 16);
@@ -162,7 +144,7 @@ int print_heX(va_list list)
 	num = va_arg(list, unsigned int);
 
 	if (num == 0)
-		return (_putchar('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
 	len = base_len(num, 16);
@@ -189,4 +171,23 @@ int print_heX(va_list list)
 	free(hex_rep);
 	free(rev_hex);
 	return (len);
+}
+
+/**
+ * hex_check - Checks which hex function is calling it
+ * @num: Number to convert into letter
+ * @x: Tells which hex function is calling it
+ * Return: Ascii value for a letter
+ */
+int hex_check(int num, char x)
+{
+	char *hex = "abcdef";
+	char *Hex = "ABCDEF";
+
+	num = num - 10;
+	if (x == 'x')
+		return (hex[num]);
+	else
+		return (Hex[num]);
+	return (0);
 }
