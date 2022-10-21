@@ -52,7 +52,6 @@ int print_integer(va_list list)
 	return (num_length);
 }
 
-#include "main.h"
 /**
  * unsigned_integer - Prints Unsigned integers
  * @list: List of all of the argumets
